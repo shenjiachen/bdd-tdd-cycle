@@ -25,6 +25,10 @@ module NavigationHelpers
       #debugger
            id = Movie.find_by_title($1).id.to_s
            "movies/#{id}/edit"
+           
+    when /^the details page for "(.*)"/
+           id = Movie.find_by_title($1).id.to_s
+           "movies/#{id}"
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

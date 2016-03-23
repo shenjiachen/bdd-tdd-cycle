@@ -1,5 +1,6 @@
 Rottenpotatoes::Application.routes.draw do
   get'' => 'movies#index'
+  get'movies/similar' => 'movies#similar'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
