@@ -22,8 +22,8 @@ module NavigationHelpers
     #  '/movies/new'
       
     when /^the edit page for "(.*)"/
-      debugger
-           id = Movie.where(title: $1).take.id
+      #debugger
+           id = Movie.find_by_title($1).id.to_s
            "movies/#{id}/edit"
 
     # Add more mappings here.
