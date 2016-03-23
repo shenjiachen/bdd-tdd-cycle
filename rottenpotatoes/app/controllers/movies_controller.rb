@@ -65,6 +65,10 @@ class MoviesController < ApplicationController
   end
   
   def similar
+    if(params[:director].length<1)
+      redirect_to movies_path
+      return
+    end
     @movies = Movie.where(director:params[:director])
    render index
   end
