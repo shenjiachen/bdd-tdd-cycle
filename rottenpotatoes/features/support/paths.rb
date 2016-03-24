@@ -29,6 +29,11 @@ module NavigationHelpers
     when /^the details page for "(.*)"/
            id = Movie.find_by_title($1).id.to_s
            "movies/#{id}"
+    
+    when /^the Similar Movies page for "(.*)"/
+          similar_movie_path(Movie.find_by_title($1))
+          #id = Movie.find_by_title($1).id.to_s
+          #'movies/#{id}/similar'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
