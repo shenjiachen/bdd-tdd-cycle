@@ -20,6 +20,11 @@ describe Movie do
     it "returns a title name as a string" do
       @movie.title.should be_a_kind_of String
     end
+    
+    it " should be present" do
+      @movie.title = ""
+      @movie.valid?.should eql false
+    end
   end
   
   describe "#rating" do
@@ -29,6 +34,11 @@ describe Movie do
     
     it "returns a rating as a string" do
       @movie.rating.should be_a_kind_of String
+    end
+    
+    it " should be present" do
+      @movie.rating = ""
+      @movie.valid?.should eql false
     end
   end
   
@@ -40,5 +50,8 @@ describe Movie do
     it "returns a director as a string" do
       @movie.director.should be_a_kind_of String
     end
+    
   end
+  
+  
 end

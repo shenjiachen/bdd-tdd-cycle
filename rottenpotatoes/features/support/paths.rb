@@ -16,6 +16,7 @@ module NavigationHelpers
     when /^the home\s?page$/
       # chaged from '/' to 'movies'
       '/movies'
+ 
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -31,8 +32,9 @@ module NavigationHelpers
       movie_path(Movie.find_by_title($1))
       
     when /^the Similar Movies page for "(.*)"$/
- 
+
       similar_movie_path(Movie.find_by_title($1))
+    
   
     else
       begin

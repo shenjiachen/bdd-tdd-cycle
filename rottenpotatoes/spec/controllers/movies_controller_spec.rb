@@ -28,22 +28,23 @@ describe MoviesController do
       expect(subject).to render_template "show" 
     end
   end
-  
-  describe "GET #find" do
-    subject { get :find, id: @movies[1] }
+  #debugger
+  describe "GET #similar" do
+    subject { get :similar, id: @movies[1] }
     
     it "assigns the requested movies[1] to @movies" do 
-      get :find, id: @movies[1]
+     # debugger
+      get :similar, id: @movies[1].id
       assigns(:movies).should eq [@movies[1]]
     end
     
     it "isn't render the find template" do
-      expect(subject).to_not render_template :find 
-      expect(subject).to_not render_template "find" 
+      expect(subject).to_not render_template :similar 
+      expect(subject).to_not render_template "similar" 
     end
     
     it "redirect to /movies when there is not same director for movies" do
-      get :find, id: @movies[1]
+      get :similar, id: @movies[1].id
       expect(response).to redirect_to :movies 
     end
   end
@@ -84,6 +85,7 @@ describe MoviesController do
   describe "POST #create" do
     context "with valid attributes" do
       it "creates a new movie" do 
+        debugger
         expect{ post :create, id: @movies[0]
               }.to change(Movie,:count).by(1) 
       end

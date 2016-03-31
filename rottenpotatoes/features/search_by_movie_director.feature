@@ -12,6 +12,7 @@ Background: movies in database
   | Blade Runner | PG     | Ridley Scott |   1982-06-25 |
   | Alien        | R      |              |   1979-05-25 |
   | THX-1138     | R      | George Lucas |   1971-03-11 |
+
  
 Scenario: add director to existing movie
   When I go to the edit page for "Alien"
@@ -25,10 +26,11 @@ Scenario: find movie with same director
   Then  I should be on the Similar Movies page for "Star Wars"
   And   I should see "THX-1138"
   But   I should not see "Blade Runner"
- 
-Scenario: can't find similar movies if we don't know director (sad path)
+  
+  Scenario: can't find similar movies if we don't know director (sad path)
   Given I am on the details page for "Alien"
   Then  I should not see "Ridley Scott"
   When  I follow "Find Movies With Same Director"
   Then  I should be on the home page
   And   I should see "'Alien' has no director info"
+ 
