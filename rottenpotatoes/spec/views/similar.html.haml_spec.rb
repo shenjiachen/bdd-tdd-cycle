@@ -1,7 +1,7 @@
 #- spec/movies/find.html.haml_spec.rb
 require 'spec_helper'
 
-describe "movies/find" do
+describe "movies/similar" do
   
   before :each do
     assign :movies, [
@@ -10,8 +10,8 @@ describe "movies/find" do
       ]
   end
  
-  describe "render #find.html.haml" do
-    it "renders the find template" do
+  describe "render #similar.html.haml" do
+    it "renders the similar template" do
       render
       
       expect(view).to render_template(:similar)
@@ -21,13 +21,13 @@ describe "movies/find" do
     it "shows a specific message" do
       render
       
-      response.should contain "All Movies With The Same Director"
+      response.should have_content ("All Movies With The Same Director")
     end
     
     it "shows the specific director" do
       render
       
-      response.should contain "George Lucas"
+      response.should have_content ("George Lucas")
     end
   end
 

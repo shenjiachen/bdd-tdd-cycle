@@ -18,7 +18,7 @@ describe "movies/show" do
     it "shows a specific title" do
       render
       
-      rendered.should contain "Details about Star Wars"
+      rendered.should have_content "Details about Star Wars"
     end
   end
 

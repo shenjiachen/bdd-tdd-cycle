@@ -42,14 +42,14 @@ class MoviesController < ApplicationController
 
   def create
    
-    if (params[:movie]["title"] =="")
-       flash[:notice] ="Title cannot be blank"
-       redirect_to new_movie_path()
-       return
-    end
+    #if (params[:movie]["title"] =="")
+      #flash[:notice] ="Title cannot be blank"
+     #  redirect_to movies_path
+   #   return
+    #end
     @movie = Movie.create!(params[:movie])
     flash[:notice] = "#{@movie.title} was successfully created."
-    redirect_to movies_path
+    redirect_to movies_path()
   end
 
   def edit
@@ -76,8 +76,8 @@ class MoviesController < ApplicationController
   if(@director_name.nil? || @director_name =='' )
      title = Movie.find(params[:id]).title
     flash[:notice] = "'#{title}' has no director info"
+    flash.keep
      redirect_to movies_path()
-     return
   else
    @movies = Movie.where(:director =>@director_name)
   end

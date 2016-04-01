@@ -14,7 +14,7 @@ describe "movies/new" do
     it "shows a value in new template" do
       render
       
-      rendered.should contain "Create New Movie"
+      rendered.should have_content "Create New Movie"
     end
   end
 

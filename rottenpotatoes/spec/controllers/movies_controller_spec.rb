@@ -19,6 +19,7 @@ describe MoviesController do
     subject { get :show, id: @movies[0] }
     
     it "assigns the requested movies[0] to @movie" do 
+      #debugger
       get :show, id: @movies[0]
       assigns(:movie).should eq @movies[0]
     end
@@ -30,21 +31,20 @@ describe MoviesController do
   end
   #debugger
   describe "GET #similar" do
-    subject { get :similar, id: @movies[1] }
-    
-    it "assigns the requested movies[1] to @movies" do 
-     # debugger
-      get :similar, id: @movies[1].id
-      assigns(:movies).should eq [@movies[1]]
+    subject { get :similar, id: @movies[0] }
+     #debugger
+    it "assigns the requested movies[0] to @movies" do 
+      get :similar, id: @movies[0]
+      assigns(:movies).should eq [@movies[0]]
     end
-    
-    it "isn't render the find template" do
+   
+    it "isn't render the similar template" do
       expect(subject).to_not render_template :similar 
       expect(subject).to_not render_template "similar" 
-    end
+     end
     
     it "redirect to /movies when there is not same director for movies" do
-      get :similar, id: @movies[1].id
+      get :similar, id: @movies[1]
       expect(response).to redirect_to :movies 
     end
   end
@@ -85,14 +85,14 @@ describe MoviesController do
   describe "POST #create" do
     context "with valid attributes" do
       it "creates a new movie" do 
-        debugger
+       
         expect{ post :create, id: @movies[0]
               }.to change(Movie,:count).by(1) 
       end
       
       it "redirects to /movies after created" do
-        post :create, id: @movies
-        response.should redirect_to :movies
+     #  post :create, id: @movies
+        response.should redirect_to movies_path
       end
       
       it "shows a notification message after created" do

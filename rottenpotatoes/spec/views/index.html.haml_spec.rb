@@ -23,13 +23,13 @@ describe "movies/index" do
     it "shows the 'All Movies' message" do
       render
       
-      rendered.should contain "All Movies"
+      rendered.should have_content "All Movies"
     end
     
     it "shows a specific title" do
       render
       
-      rendered.should contain 'Star Wars'
+      rendered.should have_content 'Star Wars'
     end
   end
 

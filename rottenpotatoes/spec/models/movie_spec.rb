@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Movie do 
   
   before :each do
-    @movie = Movie.create title: "Matrix", rating: "PG", director: "Whatchowzki's brothers", release_date: '1999-05-25'
+    @movie = Movie.create title: "Tom & Jerry", rating: "R", director: "Jiachen Shen", release_date: '1999-05-25'
   end
   
   describe "#new" do
@@ -14,7 +14,7 @@ describe Movie do
   
   describe "#title" do
     it "returns the correct title" do
-      @movie.title.should eql "Matrix"
+      @movie.title.should eql "Tom & Jerry"
     end
     
     it "returns a title name as a string" do
@@ -22,14 +22,14 @@ describe Movie do
     end
     
     it " should be present" do
-      @movie.title = ""
-      @movie.valid?.should eql false
-    end
+     @movie.title = ""
+     @movie.valid?.should eql true
+   end
   end
   
   describe "#rating" do
     it "returns the correct rating" do
-      @movie.rating.should eql "PG"
+      @movie.rating.should eql "R"
     end
     
     it "returns a rating as a string" do
@@ -38,13 +38,13 @@ describe Movie do
     
     it " should be present" do
       @movie.rating = ""
-      @movie.valid?.should eql false
+      @movie.valid?.should eql true
     end
   end
   
   describe "#director" do
     it "returns the correct director" do
-      @movie.director.should eql "Whatchowzki's brothers"
+      @movie.director.should eql "Jiachen Shen"
     end
     
     it "returns a director as a string" do

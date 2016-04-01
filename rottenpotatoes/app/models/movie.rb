@@ -2,8 +2,8 @@ class Movie < ActiveRecord::Base
 
   attr_accessible :title, :rating, :description, :release_date,:director
 
-  validates :title ,presence: true
-  validates :rating, presence: true
+ #validates :title ,presence: true
+ #validates :rating, presence: true
   
   
   def self.all_ratings
