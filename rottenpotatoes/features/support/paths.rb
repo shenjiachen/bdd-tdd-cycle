@@ -14,26 +14,9 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/
-      '/'
-      
-    when /^the (RottenPotatoes )?home\s?page$/  then '/movies'
-    when /^the movies page$/ then '/movies'
-    #when /^the Create new movie page$/
-    #  '/movies/new'
-      
-    when /^the edit page for "(.*)"/
-      #debugger
-           id = Movie.find_by_title($1).id.to_s
-           "movies/#{id}/edit"
-           
-    when /^the details page for "(.*)"/
-           id = Movie.find_by_title($1).id.to_s
-           "movies/#{id}"
-    
-    when /^the Similar Movies page for "(.*)"/
-          similar_movie_path(Movie.find_by_title($1))
-          #id = Movie.find_by_title($1).id.to_s
-          #'movies/#{id}/similar'
+      # chaged from '/' to 'movies'
+      '/movies'
+ 
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -41,6 +24,18 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
+    when /^the edit page for "(.*)"$/
+      edit_movie_path(Movie.find_by_title($1))
+      
+    when /^the details page for "(.*)"$/
+    
+      movie_path(Movie.find_by_title($1))
+      
+    when /^the Similar Movies page for "(.*)"$/
+
+      similar_movie_path(Movie.find_by_title($1))
+    
+  
     else
       begin
         page_name =~ /^the (.*) page$/

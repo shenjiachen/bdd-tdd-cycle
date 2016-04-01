@@ -1,6 +1,6 @@
 Rottenpotatoes::Application.routes.draw do
   get'' => 'movies#index'
-  match 'movies/:id/similar' => 'movies#similar', :as=> :similar_movie
+  match 'movies/:id/similar' => 'movies#similar', via: [:get], as: "similar_movie"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
